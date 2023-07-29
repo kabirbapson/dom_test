@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Hello Boys</h1>
+  <form >
+    <label >Name <input type="text" ></label><br><br>
+    <label for="hi"><input type="submit"  value="Save"></label><br>
+  </form>
+
+  <script>
+    var h1 = document.querySelector('h1')
+    var inp = document.querySelector('input')
+
+    var form = document.querySelector('form')
+    form.addEventListener('submit', function(event){
+      event.preventDefault()
+      console.log(event)
+      // if(isNum){
+        h1.style.fontSize = 30+'px'
+      // }else alert('ennter num')
+    })
+  </script>
+</body>
+</html>
