@@ -5,15 +5,68 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    label, input {
+     display: block;
+    }
+   input{
+    margin-bottom: 15px;
+   }
+   fieldset input, fieldset label{
+    display: inline;
+   }
+  </style>
 </head>
 <body>
-  <h1>Hello Boys</h1>
+  <h1>Form Basics</h1>
   <form >
-    <label >Name <input type="text" ></label><br><br>
-    <label for="hi"><input type="submit"  value="Save"></label><br>
+    <label for="name">First Name</label>
+    <input type="text" id="name" name="name" >
+
+    <label for="color">Favorite Color</label>
+    <input type="color" name="color" id="color">
+
+    <fieldset>
+      <legend>Do your want some spam 
+      </legend>
+      <input type="radio" name="spam" id="spam-yes" value="yes">
+      <label for="spam-yes">yes spam</label>
+      <input type="radio" name="spam" id="spam-no" value="no">
+      <label for="spam-no">Yes spam</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Favorite Anima</legend>
+      <input type="checkbox" name="cat" id="cat" value="Cat">
+      <label for="cat">Cat</label>
+      <input type="checkbox" name="dog" id="dog" value="Dog">
+      <label for="dog">Dog</label>
+      <input type="checkbox" name="llama" id="llama" value="Llama">
+      <label for="llama">Llama</label>
+    </fieldset>
+
+    <label for="cheese">select your cheese</label>
+    <select name="cheese" id="cheese">
+      <option value="" selected>...</option>
+      <option value="us">US</option>
+      <option value="UK">UK</option>
+      <option value="KSA">KSA</option>
+    </select>
+    
+    <label for="comment">Enter some commennts</label>
+    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Comments hhere"></textarea>
+
+<input type='submit' value="Save">
   </form>
 
   <script>
+    var color = document.getElementsByTagName('input')
+    for (let i = 0; i < color.length; i++) {
+      const element = color[i];
+      console.log(element.value)
+      
+    }
+    // console.log(color)
     var h1 = document.querySelector('h1')
     var inp = document.querySelector('input')
 
