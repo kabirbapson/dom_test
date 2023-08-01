@@ -12,7 +12,7 @@ var rows = [
   "k",
   "l",
   "m",
-  'n',
+  "n",
   "o",
   "p",
   "q",
@@ -22,12 +22,39 @@ var rows = [
 ];
 var html = "";
 var counter = 1;
+
 rows.forEach((row) => {
   html += `<div class='label'>${row}</div>`;
   for (let i = 0; i < 3; i++) {
-    html += `<div id='${row+counter}'>${counter}</div>`;
+    html += `<div id='${row + counter}'>${counter}</div>`;
     counter++;
-}
+  }
+  counter=counter+12
+});
+document.getElementById("left").innerHTML = html;
+
+html = ''
+counter=4
+rows.forEach((row) => {
+  // html += `<div class='label'>${row}</div>`;
+  for (let i = 0; i < 9; i++) {
+    html += `<div id='${row + counter}'>${counter}</div>`;
+    counter++;
+  }
+  counter+=6
+});
+document.getElementById("middle").innerHTML = html;
+
+html = ''
+counter=13
+rows.forEach((row) => {
+
+  for (let i = 0; i < 3; i++) {
+    html += `<div id='${row + counter}'>${counter}</div>`;
+    counter++;
+  }
+  html += `<div class='label'>${row}</div>`;
+  counter+=12
 });
 
-document.getElementById("left").innerHTML = html;
+document.getElementById("right").innerHTML = html;
