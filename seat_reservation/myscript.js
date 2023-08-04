@@ -41,6 +41,7 @@ rows.forEach((row) => {
     html += `<div id='${row + counter}'>${counter}</div>`;
     counter++;
   }
+  
   counter+=6
 });
 document.getElementById("middle").innerHTML = html;
