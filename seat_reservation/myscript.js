@@ -70,7 +70,7 @@ function makeRows(place, loop, count) {
     }
 
     for (let i = 0; i < loop; i++) {
-      html += `<div id='${row + counter}'>${counter}</div>`;
+      html += `<div class='a' id='${row + counter}'>${counter}</div>`;
       counter++;
     }
     counter += count;
