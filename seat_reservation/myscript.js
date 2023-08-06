@@ -138,7 +138,7 @@ for (const key in reservedSeats) {
     document.getElementById(obj.seat).innerHTML = "R";
   }
 }
-var selectedSeats = ["b24", "b25"];
+var selectedSeats = [];
 var allSeats = document.querySelectorAll(".a");
 allSeats.forEach((seats) => {
   seats.addEventListener("click", (event) => {
