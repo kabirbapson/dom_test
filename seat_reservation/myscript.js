@@ -147,20 +147,42 @@ allSeats.forEach((seats) => {
   });
 });
 function addToSeatsArray(seatID) {
-  var index = selectedSeats.indexOf(seatID) 
+  var index = selectedSeats.indexOf(seatID);
   if (index < 0) {
-    selectedSeats.push(seatID)
-    document.getElementById(seatID).className = 's'
+    selectedSeats.push(seatID);
+    document.getElementById(seatID).className = "s";
   } else {
-    selectedSeats.splice(index, 1)
-    document.getElementById(seatID).className = 'a'
-
+    selectedSeats.splice(index, 1);
+    document.getElementById(seatID).className = "a";
   }
-
-  console.log(selectedSeats)
+  manageConfirmForm();
+  console.log(selectedSeats);
 }
-// for (var ab in dock) {
-//   var click = dock[ab].addEventListener('click', function () {
-//   console.log(click)
-// })
-// }
+document.getElementById("reserve").addEventListener("click", function (e) {
+  document.getElementById("resform").style.display = "block";
+  e.preventDefault();
+});
+document.getElementById("cancel").addEventListener("click", function (e) {
+  document.getElementById("resform").style.display = "";
+  e.preventDefault();
+});
+
+function manageConfirmForm() {
+  if (selectedSeats.length > 0) {
+    document.getElementById("confirmres").style.display = "block";
+    var seatToString = selectedSeats.toString()
+    var seatComma = seatToString.replace(',', ', ')
+    document.getElementById("selectedseats").innerHTML = `You have selected ${seatComma } Seats`
+
+  } else {
+    document.getElementById("confirmres").style.display = "none";
+    document.getElementById("selectedseats").innerHTML = `You need to select some seats to reserve. <br> <a href='#' id='error'>Close</a> this dialog and pick at least one seat`
+    
+    document.getElementById("error").addEventListener("click", function (e) {
+      document.getElementById("resform").style.display = "";
+      e.preventDefault();
+    });
+  }
+}
+manageConfirmForm();
+
