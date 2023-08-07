@@ -182,6 +182,7 @@ function manageConfirmForm() {
     document.getElementById("confirmres").style.display = "none";
     document.getElementById("selectedseats").innerHTML = `You need to select some seats to reserve. <br> <a href='#' id='error'>Close</a> this dialog and pick at least one seat`
     
+    
     document.getElementById("error").addEventListener("click", function (e) {
       document.getElementById("resform").style.display = "";
       e.preventDefault();
