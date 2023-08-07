@@ -156,7 +156,6 @@ function addToSeatsArray(seatID) {
     document.getElementById(seatID).className = "a";
   }
   manageConfirmForm();
-  console.log(selectedSeats);
 }
 document.getElementById("reserve").addEventListener("click", function (e) {
   document.getElementById("resform").style.display = "block";
@@ -170,9 +169,14 @@ document.getElementById("cancel").addEventListener("click", function (e) {
 function manageConfirmForm() {
   if (selectedSeats.length > 0) {
     document.getElementById("confirmres").style.display = "block";
-    var seatToString = selectedSeats.toString()
-    var seatComma = seatToString.replace(',', ', ')
-    document.getElementById("selectedseats").innerHTML = `You have selected ${seatComma } Seats`
+    if (selectedSeats.length === 1) {
+      document.getElementById("selectedseats").innerHTML = `You have selected seat ${selectedSeats[0] } `
+    } else {
+      var seatToString = selectedSeats.toString()
+      var seatComma = seatToString.replace(/,/g, ', ')
+      var seatComma = seatToString.replace(/,(?=[^,]*$)/, " and ")
+      document.getElementById("selectedseats").innerHTML = `You have selected Seats ${seatComma } `
+    }
 
   } else {
     document.getElementById("confirmres").style.display = "none";
@@ -185,4 +189,9 @@ function manageConfirmForm() {
   }
 }
 manageConfirmForm();
+
+document.getElementById('confirmbtn').addEventListener('submit', function(e) {
+  e.preventDefault()
+  console.log('first')
+})
 
