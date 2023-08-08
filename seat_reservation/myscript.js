@@ -147,15 +147,18 @@ allSeats.forEach((seats) => {
   });
 });
 function addToSeatsArray(seatID) {
-  var index = selectedSeats.indexOf(seatID);
-  if (index < 0) {
-    selectedSeats.push(seatID);
-    document.getElementById(seatID).className = "s";
-  } else {
-    selectedSeats.splice(index, 1);
-    document.getElementById(seatID).className = "a";
+  if (!document.getElementById(seatID).classList.contains('r')) {
+    
+    var index = selectedSeats.indexOf(seatID);
+    if (index < 0) {
+      selectedSeats.push(seatID);
+      document.getElementById(seatID).className = "s";
+    } else {
+      selectedSeats.splice(index, 1);
+      document.getElementById(seatID).className = "a";
+    }
+    manageConfirmForm();
   }
-  manageConfirmForm();
 }
 document.getElementById("reserve").addEventListener("click", function (e) {
   document.getElementById("resform").style.display = "block";
@@ -218,5 +221,7 @@ function processReservation() {
     counter++
   })
   document.getElementById("resform").style.display = "none";
+  selectedSeats = []
+  manageConfirmForm()
   console.log(reservedSeats);
 }
