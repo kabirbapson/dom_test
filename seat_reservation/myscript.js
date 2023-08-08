@@ -173,16 +173,16 @@ function manageConfirmForm() {
       document.getElementById("selectedseats").innerHTML = `You have selected seat ${selectedSeats[0] } `
     } else {
       var seatToString = selectedSeats.toString()
-      var seatComma = seatToString.replace(/,/g, ', ')
-      var seatComma = seatToString.replace(/,(?=[^,]*$)/, " and ")
-      document.getElementById("selectedseats").innerHTML = `You have selected Seats ${seatComma } `
+      seatToString = seatToString.replace(/,/g, ', ')
+      seatToString = seatToString.replace(/,(?=[^,]*$)/, " and ")
+      document.getElementById("selectedseats").innerHTML = `You have selected Seats ${seatToString } `
     }
 
   } else {
     document.getElementById("confirmres").style.display = "none";
     document.getElementById("selectedseats").innerHTML = `You need to select some seats to reserve. <br> <a href='#' id='error'>Close</a> this dialog and pick at least one seat`
     
-    
+
     document.getElementById("error").addEventListener("click", function (e) {
       document.getElementById("resform").style.display = "";
       e.preventDefault();
@@ -191,8 +191,32 @@ function manageConfirmForm() {
 }
 manageConfirmForm();
 
-document.getElementById('confirmbtn').addEventListener('submit', function(e) {
+document.getElementById('confirmbtn').addEventListener('click', function(e) {
   e.preventDefault()
-  console.log('first')
+  processReservation()
 })
 
+function processReservation() {
+  const hardCodeRecord = Object.keys(reservedSeats).length
+  const fname = document.getElementById('fname').value;
+  const lname = document.getElementById('lname').value;
+  let counter = 1;
+  let nextRecord = '';
+
+  selectedSeats.forEach(function (theSeat) {
+    document.getElementById(theSeat).className = 'r'
+    document.getElementById(theSeat).innerHTML = 'R'
+    
+    nextRecord = `record${hardCodeRecord + counter}`
+    reservedSeats[nextRecord] = {
+      seat: theSeat,
+      owner: {
+        fname,
+        lname,
+      }
+    }
+    counter++
+  })
+  document.getElementById("resform").style.display = "none";
+  console.log(reservedSeats);
+}
