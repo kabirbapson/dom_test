@@ -170,6 +170,7 @@ document.getElementById("cancel").addEventListener("click", function (e) {
 });
 
 
+
 function manageConfirmForm() {
   if (selectedSeats.length > 0) {
     document.getElementById("confirmres").style.display = "block";
@@ -184,7 +185,7 @@ function manageConfirmForm() {
 
 
   } else {
-    
+
     document.getElementById("confirmres").style.display = "none";
     document.getElementById("selectedseats").innerHTML = `You need to select some seats to reserve. <br> <a href='#' id='error'>Close</a> this dialog and pick at least one seat`
     
