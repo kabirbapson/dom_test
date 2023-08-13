@@ -183,7 +183,6 @@ function manageConfirmForm() {
       document.getElementById("selectedseats").innerHTML = `You have selected Seats ${seatToString } `
     }
 
-
   } else {
 
     
