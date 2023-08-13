@@ -182,7 +182,6 @@ function manageConfirmForm() {
       seatToString = seatToString.replace(/,(?=[^,]*$)/, " and ")
       document.getElementById("selectedseats").innerHTML = `You have selected Seats ${seatToString } `
     }
-
   } else {
 
     document.getElementById("confirmres").style.display = "none";
